@@ -1,51 +1,63 @@
-# vs-git-away README
+# VS Git Away
 
-This is the README for your extension "vs-git-away". After writing up a brief description, we recommend including the following sections.
+Git管理から特定のファイルを除外し、除外されたファイルを視覚的に管理するためのVS Code拡張機能です。`.git/info/exclude`ファイルを使用してローカルでのGit除外を管理します。
 
-## Features
+## 機能
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### 🗂️ Git除外ファイル管理
+- `.git/info/exclude`に記載されたファイル一覧をサイドバーに表示
+- 除外されたファイルの存在確認とアイコン表示
+- ファイルクリックで直接開く機能
 
-For example if there is an image subfolder under your extension project workspace:
+### ➕ ファイル除外機能
+- エクスプローラーからファイルを右クリックしてGit管理から除外
+- ワークスペースルートからの相対パスで自動管理
+- 重複チェック機能付き
 
-\!\[feature X\]\(images/feature-x.png\)
+### ➖ 除外解除機能
+- サイドバーから除外されたファイルを右クリックで除外解除
+- 除外リストからの安全な削除
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### 🔄 リアルタイム更新
+- ファイル操作後の自動ツリービュー更新
+- 手動更新コマンドも利用可能
 
-## Requirements
+## 使用方法
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### ファイルをGit管理から除外する
+1. エクスプローラーで除外したいファイルを右クリック
+2. 「Git管理から外す」を選択
+3. ファイルが`.git/info/exclude`に追加され、サイドバーに表示されます
 
-## Extension Settings
+### 除外を解除する
+1. VS Git Awayサイドバーで除外解除したいファイルを右クリック
+2. 「除外リストから削除」を選択
+3. ファイルが`.git/info/exclude`から削除されます
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### サイドバーを更新する
+- コマンドパレット（Ctrl+Shift+P）から「Git Away: Refresh Explorer」を実行
 
-For example:
+## 必要な環境
 
-This extension contributes the following settings:
+- Visual Studio Code 1.60.0以上
+- Gitが初期化されたプロジェクト（`.git`ディレクトリが存在すること）
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## 拡張機能の設定
 
-## Known Issues
+この拡張機能は追加の設定は必要ありません。インストール後すぐに使用できます。
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## 既知の問題
 
-## Release Notes
+- 現在のところ、既知の問題はありません
 
-Users appreciate release notes as you update your extension.
+## リリースノート
 
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+- 初回リリース
+- Git除外ファイル管理機能
+- サイドバーツリービュー
+- ファイル除外・除外解除機能
 
 ---
 
