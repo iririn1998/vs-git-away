@@ -12,12 +12,82 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "views": {
+      "vs-git-away-sidebar": [
+        {
+          "id": "vs-git-away-explorer",
+          "name": "Git除外ファイル一覧",
+          "when": "true"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vs-git-away-sidebar",
+          "title": "Git除外管理",
+          "icon": "./images/icon.png"
+        }
+      ]
+    },
     "commands": [
       {
-        "command": "vs-git-away.helloWorld",
-        "title": "Hello World"
+        "command": "vs-git-away.refreshExplorer",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "vs-git-away.showCurrentBranch",
+        "title": "現在のブランチを表示"
+      },
+      {
+        "command": "vs-git-away.showChangedFiles",
+        "title": "変更されたファイルを表示"
+      },
+      {
+        "command": "vs-git-away.createBranch",
+        "title": "新しいブランチを作成"
+      },
+      {
+        "command": "vs-git-away.switchBranch",
+        "title": "ブランチを切り替え"
+      },
+      {
+        "command": "vs-git-away.openSettings",
+        "title": "設定を開く"
+      },
+      {
+        "command": "vs-git-away.excludeFromGit",
+        "title": "git管理から外す"
+      },
+      {
+        "command": "vs-git-away.removeFromExclude",
+        "title": "除外リストから削除"
       }
-    ]
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "vs-git-away.refreshExplorer",
+          "when": "view == vs-git-away-explorer",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "vs-git-away.excludeFromGit",
+          "when": "!explorerResourceIsFolder",
+          "group": "gitaway@1"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "vs-git-away.removeFromExclude",
+          "when": "view == vs-git-away-explorer && viewItem == excludedFile",
+          "group": "gitaway@1"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
